@@ -5,45 +5,54 @@ export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
   @Post()
-  createPost(
+  async createPost(
     @Body() completeBody: {
      title: string,
      description: string, 
-    }): object {
+    }): Promise<object> {
     const {title, description} = completeBody
-    const generatedId = this.postsService.createPost(title, description)
+    const generatedId = await this.postsService.createPost(title, description)
     return {
       id: generatedId
     }
   }
 
   @Get()
-  getPosts() {
-    const posts = this.postsService.getPosts()
-    return posts
+  async getPosts(): Promise<Array<object>> {
+    const posts = await this.postsService.getPosts()
+    return posts.map(post => ({
+      id: post.id,
+      title: post.title,
+      description: post.description,
+      updated_at: post.updated_at,
+      created_at: post.created_at,
+      comments: post.comments,
+    }))
   }
 
   @Get(':id')
-  getPost(@Param('id') postId: string) {
-    return this.postsService.getPostById(postId)
+  async getPost(@Param('id') postId: string) {
+    const post = await this.postsService.getPostById(postId)
+    return post
   }
 
   @Patch(':id')
-  updatePost(
+  async updatePost(
     @Param('id') postId: string,
     @Body() completeBody: {
      title: string,
      description: string, 
     }) {
     const {title, description} = completeBody
-    return this.postsService.updatePost(postId, title, description)
+    const post = await this.postsService.updatePost(postId, title, description)
+    return post
   }
 
   @Delete(':id')
-  removePost(
+  async removePost(
     @Param('id') postId: string,
   ) {
-    this.postsService.removePost(postId)
+    await this.postsService.removePost(postId)
     return null
   }
 }
