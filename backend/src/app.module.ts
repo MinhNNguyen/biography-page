@@ -4,11 +4,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PostsModule } from './posts/posts.module';
-
-// TODO: use environment variable to save the access information to the database.
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [PostsModule, MongooseModule.forRoot(process.env.MONGO_DB_ACCESS)],
+  imports: [
+    ConfigModule.forRoot(),
+    PostsModule,
+    MongooseModule.forRoot(process.env.MONGO_DB_ACCESS),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
