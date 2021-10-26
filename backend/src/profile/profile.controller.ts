@@ -10,10 +10,14 @@ export class ProfileController {
     @Body() completeBody: { first_name: string; last_name: string },
   ): Promise<any> {
     const { first_name, last_name } = completeBody;
+    console.log({ completeBody, first_name, last_name });
     const result = await this.profileService.createProfile(
       first_name,
       last_name,
     );
     return result;
   }
+
+  // TODO: update profile
+  // TODO: get profile
 }
