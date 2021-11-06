@@ -22,6 +22,39 @@ export class ProfileService {
     return result;
   }
 
-  // TODO: update profile
-  // TODO: get profile
+  async getProfile() {
+    const result = await this.profileModel.findOne();
+    return result;
+  }
+
+  async updateProfile(
+    first_name,
+    last_name,
+    dob,
+    github_profile,
+    linkedin_profile_url,
+    facebook_profile_url,
+  ) {
+    const updatedProfile = await this.profileModel.findOne();
+    if (first_name) {
+      updatedProfile.first_name = first_name;
+    }
+    if (last_name) {
+      updatedProfile.last_name = last_name;
+    }
+    if (dob) {
+      updatedProfile.dob = dob;
+    }
+    if (github_profile) {
+      updatedProfile.github_profile = github_profile;
+    }
+    if (linkedin_profile_url) {
+      updatedProfile.linkedin_profile_url = linkedin_profile_url;
+    }
+    if (facebook_profile_url) {
+      updatedProfile.facebook_profile_url = facebook_profile_url;
+    }
+    updatedProfile.save();
+    return updatedProfile;
+  }
 }

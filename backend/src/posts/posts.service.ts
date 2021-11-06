@@ -67,7 +67,6 @@ export class PostsService {
     updatedPost.updated_at = new Date().toString();
     updatedPost.save();
     return updatedPost;
-    return {};
   }
 
   async removePost(selectedId: string) {
