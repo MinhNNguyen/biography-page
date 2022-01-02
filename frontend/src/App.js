@@ -2,10 +2,10 @@ import {
   BrowserRouter,
   Route,
   Routes,
-  Navigate
-} from 'react-router-dom'
-import Landing from './components/Landing'
-import Posts from './components/Posts'
+  Navigate,
+} from 'react-router-dom';
+import Landing from './components/Landing';
+import Posts from './components/Posts';
 import './App.css';
 
 function App() {
@@ -15,10 +15,12 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Landing />} />
+            element={<Landing />}
+          />
           <Route
             path="/posts"
-            element={<Posts />} />
+            element={<Posts />}
+          />
           <Route
             path="*"
             element={<Navigate to="/" />}
