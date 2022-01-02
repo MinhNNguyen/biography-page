@@ -14,11 +14,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route
-            exact
             path="/"
             element={<Landing />} />
           <Route
-            exact
             path="/posts"
             element={<Posts />} />
           <Route
