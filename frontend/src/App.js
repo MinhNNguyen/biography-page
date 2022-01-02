@@ -1,7 +1,8 @@
 import {
   BrowserRouter,
   Route,
-  Routes
+  Routes,
+  Navigate
 } from 'react-router-dom'
 import Landing from './components/Landing'
 import Posts from './components/Posts'
@@ -13,13 +14,17 @@ function App() {
       <div className="App">
         <Routes>
           <Route
-          exact
-          path="/profile"
-          component={Landing} />
+            exact
+            path="/"
+            element={<Landing />} />
           <Route
-          exact
-          path="/posts"
-          component={Posts} />
+            exact
+            path="/posts"
+            element={<Posts />} />
+          <Route
+            path="*"
+            element={<Navigate to="/" />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
