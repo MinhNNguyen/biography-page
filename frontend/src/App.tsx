@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   BrowserRouter,
   Route,
@@ -7,11 +8,13 @@ import {
 import Landing from './components/Landing';
 import Posts from './components/Posts';
 import './App.css';
+import Header from './components/Layout/Header';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <Header />
         <Routes>
           <Route
             path="/"

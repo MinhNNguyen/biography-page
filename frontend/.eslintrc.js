@@ -20,6 +20,29 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    maxLen: ['warn', { code: 100 }]
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-array-constructor': 'warn',
+    'no-array-constructor': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/prop-types': 'warn',
+    'no-unused-vars': 'warn',
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        moduleDirectory: ['node_modules', 'src/'],
+      },
+    },
   },
 };
