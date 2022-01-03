@@ -36,6 +36,9 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'react/prop-types': 'warn',
     'no-unused-vars': 'warn',
+    'react/function-component-definition': 'off',
+    'import/prefer-default-export': 'off',
+    'global-require': 'off',
   },
   settings: {
     'import/resolver': {

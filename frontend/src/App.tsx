@@ -5,9 +5,9 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom';
-import Landing from './components/Landing';
+import Home from './components/Home';
 import Posts from './components/Posts';
-import './App.css';
+import 'assets/custom.css';
 import Header from './components/Layout/Header';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Landing />}
+            element={<Home />}
           />
           <Route
             path="/posts"
